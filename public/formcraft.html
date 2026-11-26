@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FormCraft AI | محرر الاستمارات والامتحانات</title>
+<meta name="description" content="أنشئ استمارات وامتحانات بالعربية، خصصها واطبعها أو احفظها PDF، مع مساعد ذكاء اصطناعي.">
+<meta name="theme-color" content="#0f6b5c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f3;--sf:#fff;--ink:#14302b;--mu:#5c6f6a;--ac:#0f6b5c;--ac2:#e8a92b;--ln:#d9dfda;--sh:0 1px 2px rgba(20,48,43,.06),0 4px 14px rgba(20,48,43,.06);--r:12px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a18;--sf:#172623;--ink:#e6efec;--mu:#97aaa5;--ac:#3fb59f;--ln:#2a3c38;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25)}}
+:root[data-theme="dark"]{--bg:#0f1a18;--sf:#172623;--ink:#e6efec;--mu:#97aaa5;--ac:#3fb59f;--ln:#2a3c38;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Readex Pro',Tahoma,sans-serif;line-height:1.7}
+button,input,select,textarea{font:inherit;color:inherit}
+header{display:flex;align-items:center;gap:10px;padding:12px 20px;background:color-mix(in srgb,var(--sf) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln);position:sticky;top:0;z-index:5}
+header b{font-size:20px;margin-inline-end:auto}header b i{color:#fff;background:var(--ac);font-style:normal;border-radius:6px;padding:0 7px;margin-inline-start:4px;font-size:.8em}
+.btn{border:1px solid var(--ln);background:var(--sf);border-radius:10px;padding:8px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .05s}.btn:active{transform:translateY(1px)}.btn:disabled{opacity:.55;cursor:wait}
+.btn:hover{border-color:var(--ac);box-shadow:var(--sh)}.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}.btn.s{padding:3px 9px;font-size:13px}
+:focus-visible{outline:2px solid var(--ac2);outline-offset:2px}
+main{max-width:1400px;margin:0 auto;padding:20px 16px}
+.hero{padding:44px 28px;margin-bottom:8px;border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 14%,var(--sf)),var(--sf));border:1px solid var(--ln)}.hero h1{font-size:clamp(28px,6vw,48px);line-height:1.25;margin:0 0 10px;max-width:16em}.hero p{color:var(--mu);margin:0 0 18px;max-width:34em}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+h2{margin:34px 0 14px;font-size:20px}footer.site{text-align:center;color:var(--mu);font-size:13px;padding:24px 16px 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:16px;box-shadow:var(--sh);transition:transform .15s,border-color .15s}.grid .card:hover{transform:translateY(-2px);border-color:var(--ac)}
+.card h3{margin:0 0 4px;font-size:16px}.card small{color:var(--mu)}
+.ed{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:16px;align-items:start}
+@media(max-width:860px){.ed{grid-template-columns:1fr}}
+.pan{display:flex;flex-direction:column;gap:10px}
+label{display:block;font-size:13px;color:var(--mu)}
+input[type=text],input[type=search],input[type=number],select,textarea{width:100%;border:1px solid var(--ln);background:var(--bg);border-radius:8px;padding:8px 10px}
+textarea{resize:vertical;min-height:54px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.it{border-inline-start:4px solid var(--ac);}
+.it .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13px;color:var(--mu)}
+.stage{overflow:auto;background:var(--ln);padding:12px;border-radius:var(--r)}
+#page{background:#fff;color:#111;margin:0 auto;box-shadow:0 2px 14px rgba(0,0,0,.18);font-family:'Readex Pro',Tahoma,sans-serif}
+#page h1{margin:0 0 4px}.q{break-inside:avoid;margin:14px 0}.ln{border-bottom:1px solid #777;height:1.6em;margin-top:4px}
+.ph,.pf{font-size:.8em;color:#555;text-align:center}.ph{border-bottom:1px solid #bbb;margin-bottom:10px}.pf{border-top:1px solid #bbb;margin-top:14px}
+.ok{font-weight:700;color:#0a6b3a}.pts{color:#555;font-size:.85em}
+#ai{border:1px dashed var(--ac)}#aimsg{font-size:13px;color:var(--mu);min-height:20px}
+#toast{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));inset-inline-start:14px;background:var(--ink);color:var(--bg);padding:6px 12px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s}#toast.on{opacity:1}
+.pbk{break-after:page;border-top:2px dashed #aaa;margin:10px 0}.tabs{display:none}.stage{position:sticky;top:64px;max-height:calc(100vh - 80px)}@media(max-width:860px){.tabs{display:flex;position:fixed;bottom:0;inset-inline:0;background:var(--sf);border-top:1px solid var(--ln);z-index:6;padding-bottom:env(safe-area-inset-bottom,0px)}.tabs button{flex:1;border:0;background:none;padding:12px;cursor:pointer}.tabs .on{color:var(--ac);font-weight:700}main{padding-bottom:84px}.stage{position:static;max-height:none}.ed.m-pv .pan{display:none}.ed.m-ed .stage{display:none}.ed{display:flex;flex-direction:column}.ed>div:nth-child(2){order:-1}}
+@media print{#page{zoom:1!important}.ed .stage{display:block!important;position:static}#page.fr{padding:3mm!important}.pbk{border:0!important;margin:0!important}header,.pan,#toast,.noprint{display:none!important}body{background:#fff}main{padding:0;max-width:none}.ed{display:block}.stage{padding:0;background:none;overflow:visible}#page{box-shadow:none;padding:0!important;width:auto!important;min-height:0!important}}
+</style>
+</head>
+<body>
+<header class="noprint"><b>FormCraft <i>AI</i></b>
+<button class="btn s" data-a="home">الرئيسية</button><button class="btn s" data-a="theme" aria-label="تبديل الوضع">◐</button></header>
+<main id="app"></main>
+<footer class="site noprint">FormCraft AI &middot; مستنداتك تُحفظ على جهازك فقط</footer>
+<div id="toast" role="status"></div>
+<style id="pgs"></style>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T={text:'نص قصير',long:'نص طويل',phone:'رقم الهاتف',email:'البريد الإلكتروني',date:'تاريخ',select:'قائمة منسدلة',radio:'اختيار إجابة واحدة',check:'اختيار متعدد',sign:'توقيع',mcq:'اختيار من متعدد',tf:'صح أو خطأ',fill:'أكمل العبارة',short:'إجابة قصيرة',essay:'سؤال مقالي',section:'عنوان قسم',pbreak:'فاصل صفحة'};
+const EX=['mcq','tf','fill','short','essay','section','pbreak'],FM=['text','long','phone','email','date','select','radio','check','sign','section','pbreak'],HAS=['select','radio','check','mcq'];
+const SZ={A4:[210,297],A5:[148,210],Letter:[216,279]};
+let id=()=>Math.random().toString(36).slice(2,9),docs=[],cur=null,view='home',teacher=false,q='',mob='ed';
+try{docs=JSON.parse(localStorage.getItem('fc_docs')||'[]')}catch(e){docs=[]}
+let ep='';try{ep=localStorage.getItem('fc_ep')||'/api/ai'}catch(e){}
+const I=(t,qq,o,a,p)=>({id:id(),t,q:qq,opts:o||[],ans:a??'',pts:p||0,req:false});
+const base={size:'A4',orient:'portrait',color:'#0f6b5c',font:15,margin:15,header:'',footer:'',pn:true,logo:'',cover:false,frame:false,gap:14};
+const TPL=[
+{n:'تسجيل طلاب',k:'form',d:'بيانات الطالب وولي الأمر',items:()=>[I('text','الاسم بالكامل'),I('text','السن'),I('phone','رقم الهاتف'),I('long','العنوان'),I('text','اسم ولي الأمر'),I('select','الصف الدراسي',['الأول','الثاني','الثالث','الرابع'])]},
+{n:'طلب توظيف',k:'form',d:'بيانات المتقدم وخبراته',items:()=>[I('text','الاسم بالكامل'),I('email','البريد الإلكتروني'),I('phone','رقم الهاتف'),I('select','الوظيفة المطلوبة',['محاسب','مبرمج','مصمم','مدير مشروع']),I('long','الخبرات السابقة'),I('sign','التوقيع')]},
+{n:'استبيان رضا',k:'form',d:'قياس رضا العملاء',items:()=>[I('radio','ما مدى رضاك عن الخدمة؟',['ممتاز','جيد','متوسط','ضعيف']),I('check','ما الميزات التي تستخدمها؟',['السرعة','السعر','الدعم','التصميم']),I('long','اقتراحاتك للتحسين')]},
+{n:'امتحان رياضيات',k:'exam',d:'اختيار، صح وخطأ، مسألة',items:()=>[I('mcq','ناتج 7 × 8 يساوي:',['54','56','58','64'],1,2),I('tf','مجموع زوايا المثلث 180 درجة.',[],0,1),I('fill','الجذر التربيعي للعدد 81 = ____',[],'9',2),I('essay','أوجد مساحة مستطيل طوله 8 سم وعرضه 5 سم مع توضيح الحل.',[],'المساحة = 8 × 5 = 40 سم²',5)]}];
+function save(m){try{localStorage.setItem('fc_docs',JSON.stringify(docs));if(m)toast('تم الحفظ')}catch(e){toast('تعذّر الحفظ: التخزين ممتلئ أو غير متاح')}}
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1400)}
+function mk(k,items,title,d){const o={id:id(),k,title:title||(k=='exam'?'امتحان جديد':'استمارة جديدة'),desc:d||'',items:items||[],set:{...base},up:Date.now()};docs.unshift(o);cur=o;view='ed';teacher=false;save();draw()}
+function draw(){view=='ed'&&cur?edView():homeView();scrollTo(0,0)}
+function homeView(){const l=docs.filter(d=>d.title.includes(q));
+$('#app').innerHTML=`<section class="hero"><h1>أنشئ، خصّص، وصدّر بسهولة</h1><p>استمارات وامتحانات بالعربية، تحرّرها بنفسك أو تطلبها من المساعد، ثم تطبعها أو تحفظها PDF.</p>
+<div class="row"><button class="btn p" data-a="new" data-k="form">إنشاء استمارة</button><button class="btn p" data-a="new" data-k="exam">إنشاء امتحان</button><button class="btn" data-a="new" data-k="form" data-ai="1">إنشاء باستخدام الذكاء الاصطناعي</button></div></section>
+<h2>القوالب الجاهزة</h2><div class="grid">${TPL.map((t,i)=>`<div class="card"><h3>${t.n}</h3><small>${t.k=='exam'?'امتحان':'استمارة'} — ${t.d}</small><div style="margin-top:8px"><button class="btn s" data-a="tpl" data-i="${i}">استخدام القالب</button></div></div>`).join('')}</div>
+<h2>مستنداتي</h2><input type="search" id="sq" placeholder="ابحث عن مستند" value="${esc(q)}" style="margin-bottom:10px">
+<div class="grid">${l.length?l.map(d=>`<div class="card"><h3>${esc(d.title)}</h3><small>${d.k=='exam'?'امتحان':'استمارة'} — ${d.items.length} عنصر — ${new Date(d.up).toLocaleDateString('ar')}</small><div class="row" style="margin-top:8px"><button class="btn s" data-a="open" data-id="${d.id}">فتح</button><button class="btn s" data-a="dup" data-id="${d.id}">نسخ</button><button class="btn s" data-a="del" data-id="${d.id}">حذف</button></div></div>`).join(''):'<p style="color:var(--mu)">لا توجد مستندات بعد. ابدأ بقالب أو أنشئ مستندًا جديدًا.</p>'}</div>`;
+$('#sq').oninput=e=>{q=e.target.value;const p=e.target.selectionStart;homeView();const s=$('#sq');s.focus();s.setSelectionRange(p,p)}}
+function edView(){const d=cur,s=d.set,ex=d.k=='exam';
+$('#app').innerHTML=`<div class="ed m-${mob}"><div class="pan">
+<div class="card"><label>العنوان<input type="text" data-d="title" value="${esc(d.title)}"></label><label>الوصف والتعليمات<textarea data-d="desc">${esc(d.desc)}</textarea></label>
+<div class="g2"><label>النوع<select data-d="k"><option value="form" ${!ex?'selected':''}>استمارة</option><option value="exam" ${ex?'selected':''}>امتحان</option></select></label>
+<label>حجم الورق<select data-s="size">${Object.keys(SZ).map(z=>`<option ${s.size==z?'selected':''}>${z}</option>`).join('')}</select></label>
+<label>الاتجاه<select data-s="orient"><option value="portrait" ${s.orient=='portrait'?'selected':''}>رأسي</option><option value="landscape" ${s.orient=='landscape'?'selected':''}>أفقي</option></select></label>
+<label>لون العناوين<input type="color" data-s="color" value="${s.color}"></label>
+<label>حجم الخط<input type="number" min="10" max="24" data-s="font" value="${s.font}"></label>
+<label>الهوامش (مم)<input type="number" min="5" max="40" data-s="margin" value="${s.margin}"></label></div>
+<label>رأس الصفحة<input type="text" data-s="header" value="${esc(s.header)}"></label><label>تذييل الصفحة<input type="text" data-s="footer" value="${esc(s.footer)}"></label>
+<label><input type="checkbox" data-s="pn" ${s.pn?'checked':''}> ترقيم الصفحات عند الطباعة</label><label>شعار المؤسسة<input type="file" accept="image/*" id="logo"></label>${s.logo?'<button class="btn s" data-a="nologo">إزالة الشعار</button>':''}<label><input type="checkbox" data-s="cover" ${s.cover?'checked':''}> صفحة غلاف</label><label><input type="checkbox" data-s="frame" ${s.frame?'checked':''}> إطار حول الصفحات</label><label>المسافة بين الأسئلة (px)<input type="number" min="4" max="60" data-s="gap" value="${s.gap||14}"></label></div>
+<div class="card" id="ai"><label>المساعد: اكتب طلبك (مثل: أضف سؤالًا، احذف السؤال 2، غيّر العنوان إلى ...)<textarea id="aiq"></textarea></label><div class="row" style="margin-top:6px"><button class="btn p s" data-a="aisend">تنفيذ</button><button class="btn s" data-a="aiset">إعداد خدمة الذكاء الاصطناعي</button></div><div id="aimsg"></div></div>
+<div class="row">${(ex?EX:FM).map(t=>`<button class="btn s" data-a="add" data-t="${t}">+ ${T[t]}</button>`).join('')}</div>
+${d.items.map((x,i)=>`<div class="card it" data-di="${i}"><div class="top"><span><span data-dh="${i}" draggable="true" style="cursor:grab" title="اسحب لإعادة الترتيب">⠿</span> ${i+1}. ${T[x.t]}</span><span class="row" style="gap:4px"><button class="btn s" data-a="up" data-i="${i}" aria-label="للأعلى">↑</button><button class="btn s" data-a="down" data-i="${i}" aria-label="للأسفل">↓</button><button class="btn s" data-a="idup" data-i="${i}">نسخ</button><button class="btn s" data-a="idel" data-i="${i}">حذف</button></span></div>
+<textarea data-i="${i}" data-f="q">${esc(x.q)}</textarea>
+${HAS.includes(x.t)?`<label>الخيارات (خيار في كل سطر)<textarea data-i="${i}" data-f="opts" data-c="1">${esc(x.opts.join('\n'))}</textarea></label>`:''}
+<div class="g2">${x.t=='mcq'?`<label>الإجابة الصحيحة<select data-i="${i}" data-f="ans">${x.opts.map((o,j)=>`<option value="${j}" ${x.ans==j?'selected':''}>${esc(o)||'خيار '+(j+1)}</option>`).join('')}</select></label>`:''}
+${x.t=='tf'?`<label>الإجابة الصحيحة<select data-i="${i}" data-f="ans"><option value="0" ${x.ans==0?'selected':''}>صح</option><option value="1" ${x.ans==1?'selected':''}>خطأ</option></select></label>`:''}
+${['fill','short','essay'].includes(x.t)?`<label>نموذج الإجابة<input type="text" data-i="${i}" data-f="ans" value="${esc(x.ans)}"></label>`:''}
+${ex&&!['section','pbreak'].includes(x.t)?`<label>الدرجة<input type="number" min="0" step="0.5" data-i="${i}" data-f="pts" value="${x.pts}"></label>`:ex?'':['section','pbreak'].includes(x.t)?'':`<label><input type="checkbox" data-i="${i}" data-f="req" ${x.req?'checked':''}> مطلوب</label>`}</div></div>`).join('')}
+</div><div><div class="row noprint" style="margin-bottom:8px"><button class="btn p" data-a="print">طباعة / حفظ PDF</button>${ex?`<button class="btn" data-a="teacher">${teacher?'عرض نسخة الطالب':'عرض نموذج الإجابة للمعلم'}</button>`:''}<button class="btn" data-a="home">حفظ والعودة</button></div><div class="stage"><div id="page"></div></div></div></div><nav class="tabs noprint"><button class="${mob=='ed'?'on':''}" data-a="tab" data-m="ed">تحرير</button><button class="${mob=='pv'?'on':''}" data-a="tab" data-m="pv">معاينة</button></nav>`;
+pv()}
+function pv(){const d=cur,s=d.set,ex=d.k=='exam',[w,h]=SZ[s.size],L=s.orient=='landscape',W=L?h:w,H=L?w:h,tot=d.items.reduce((a,x)=>a+(+x.pts||0),0);
+const pg=$('#page');if(!pg)return;
+pg.style.cssText=`width:${W}mm;max-width:none;min-height:${H}mm;padding:${s.margin}mm;font-size:${s.font}px${s.frame?`;border:2px solid ${s.color};box-decoration-break:clone`:''}`;pg.classList.toggle('fr',!!s.frame);
+$('#pgs').textContent=`@page{size:${s.size} ${s.orient};margin:${s.margin}mm${s.pn?`;@bottom-center{content:counter(page);font-size:10px}`:''}}`;
+const mark=(c,on)=>`<span class="${on?'ok':''}">${on?'✔':c}</span>`;
+pg.innerHTML=(s.cover?`<div style="min-height:${H-2*s.margin-4}mm;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;break-after:page">${s.logo?`<img src="${s.logo}" style="max-height:60mm;max-width:70%;margin-bottom:12mm">`:''}<h1 style="color:${s.color};font-size:2.4em">${esc(d.title)}</h1><p>${esc(d.desc)}</p></div>`:'')+(!s.cover&&s.logo?`<img src="${s.logo}" style="max-height:22mm;float:left;margin:0 8px">`:'')+(s.header?`<div class="ph">${esc(s.header)}</div>`:'')+`<h1 style="color:${s.color}">${esc(d.title)}${teacher?' — نموذج الإجابة':''}</h1>${d.desc?`<p>${esc(d.desc)}</p>`:''}${ex?`<p class="pts">الدرجة الكلية: ${tot}</p>`:''}`+d.items.map((x,i)=>{
+if(x.t=='pbreak')return'<div class="pbk"></div>';if(x.t=='section')return`<h2 style="color:${s.color};border-bottom:2px solid ${s.color};margin:18px 0 6px;font-size:1.15em">${esc(x.q)}</h2>`;const nn=d.items.slice(0,i).filter(y=>y.t!='section'&&y.t!='pbreak').length+1;let b='';const o=x.opts;
+if(['text','phone','email','date','short','sign'].includes(x.t))b=`<div class="ln">${teacher&&x.t=='short'?`<span class="ok">${esc(x.ans)}</span>`:''}</div>`;
+else if(['long','essay'].includes(x.t))b=(teacher&&x.t=='essay'&&x.ans?`<div class="ok">${esc(x.ans)}</div>`:'')+'<div class="ln"></div>'.repeat(3);
+else if(x.t=='fill')b=teacher?`<div class="ok">${esc(x.ans)}</div>`:'';
+else if(x.t=='tf')b=['صح','خطأ'].map((v,j)=>`<span style="margin-inline-end:20px">${mark('○',teacher&&x.ans==j)} ${v}</span>`).join('');
+else if(HAS.includes(x.t))b=o.map((v,j)=>`<div>${mark(x.t=='check'?'□':'○',teacher&&x.t=='mcq'&&x.ans==j)} ${esc(v)}</div>`).join('');
+return`<div class="q" style="margin:${s.gap||14}px 0"><b style="color:${s.color}">${nn}.</b> ${esc(x.q)}${x.req?' *':''}${ex&&x.pts?` <span class="pts">(${x.pts} درجة)</span>`:''}${b}</div>`}).join('')+(s.footer?`<div class="pf">${esc(s.footer)}</div>`:'');const st=pg.parentElement;pg.style.zoom=Math.max(.2,Math.min(1,(st.clientWidth-24)/(W*3.7795)))}
+function touch(){cur.up=Date.now();save();pv()}
+function move(i,j){const a=cur.items;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];touch();edView()}
+function ai(){const t=$('#aiq').value.trim(),m=$('#aimsg'),d=cur;let r;if(!t)return;
+if(r=t.match(/احذف السؤال\s*(\d+)/)){const n=+r[1]-1;if(d.items[n]){d.items.splice(n,1);touch();edView();toast('تم حذف السؤال');return}m.textContent='رقم السؤال غير موجود.';return}
+if(r=t.match(/غي[ّ]?ر العنوان (?:إلى|الى)\s*(.+)/)){d.title=r[1];touch();edView();toast('تم تغيير العنوان');return}
+if(/^أضف/.test(t)&&!ep){const t2=d.k=='exam'?'mcq':'text';d.items.push(I(t2,'سؤال جديد',t2=='mcq'?['خيار 1','خيار 2']:[],0,1));touch();edView();toast('تمت إضافة سؤال');return}
+if(!ep){m.textContent='لم يتم ضبط خدمة الذكاء الاصطناعي. يمكنك استخدام الأوامر البسيطة (أضف، احذف السؤال N، غيّر العنوان إلى) أو المحرر اليدوي. التوليد الكامل يحتاج خادمًا يحمل مفتاح API.';return}
+m.textContent='جارٍ الاتصال بالخدمة...';
+fetch(ep,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:t,doc:{title:d.title,kind:d.k,items:d.items}})}).then(r=>r.json().catch(()=>({})).then(j=>{if(!r.ok||!Array.isArray(j.items))throw new Error(j.error||'');return j})).then(j=>{if(j.title)d.title=j.title;d.items=j.items.map(x=>({...I(x.t,x.q,x.opts,x.ans,x.pts),...x,id:id()}));touch();edView();toast('تم تحديث المستند')}).catch(err=>{m.textContent=err&&err.message?err.message:'تعذّر الوصول إلى الخدمة أو أن ردّها غير صالح. تأكد من العنوان وإعدادات CORS.'}).finally(()=>{const b=$('[data-a=aisend]');if(b)b.disabled=false});const sb=$('[data-a=aisend]');if(sb)sb.disabled=true}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,D=b.dataset;
+if(a=='home'){cur=null;view='home';mob='ed';draw()}
+else if(a=='theme'){const r=document.documentElement;r.dataset.theme=(r.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))=='dark'?'light':'dark'}
+else if(a=='new'){mk(D.k);if(D.ai)$('#aiq').focus()}
+else if(a=='tpl'){const t=TPL[D.i];mk(t.k,t.items(),t.n,t.d)}
+else if(a=='open'){cur=docs.find(x=>x.id==D.id);view='ed';teacher=false;draw()}
+else if(a=='dup'){const o=docs.find(x=>x.id==D.id),c=JSON.parse(JSON.stringify(o));c.id=id();c.title+=' (نسخة)';c.up=Date.now();docs.unshift(c);save(1);homeView()}
+else if(a=='del'){if(confirm('حذف هذا المستند نهائيًا؟')){docs=docs.filter(x=>x.id!=D.id);save(1);homeView()}}
+else if(!cur)return;
+else if(a=='add'){cur.items.push(I(D.t,D.t=='section'?'عنوان القسم':D.t=='pbreak'?'فاصل صفحة':'سؤال جديد',HAS.includes(D.t)?['خيار 1','خيار 2']:[],0,cur.k=='exam'&&!['section','pbreak'].includes(D.t)?1:0));touch();edView()}
+else if(a=='up')move(+D.i,D.i-1);else if(a=='down')move(+D.i,+D.i+1);
+else if(a=='idup'){const c={...cur.items[D.i],id:id()};cur.items.splice(+D.i+1,0,c);touch();edView()}
+else if(a=='idel'){cur.items.splice(D.i,1);touch();edView()}
+else if(a=='teacher'){teacher=!teacher;edView()}
+else if(a=='print')print();else if(a=='nologo'){cur.set.logo='';touch();edView()}else if(a=='tab'){mob=D.m;edView()}
+else if(a=='aisend')ai();
+else if(a=='aiset'){const v=prompt('عنوان خدمة الذكاء الاصطناعي (POST يعيد JSON فيه items). اتركه فارغًا للإلغاء:',ep);if(v!==null){ep=v.trim();try{localStorage.setItem('fc_ep',ep)}catch(e){}toast('تم حفظ الإعداد')}}});
+function onIn(e){const t=e.target,D=t.dataset;if(!cur)return;const v=t.type=='checkbox'?t.checked:t.value;
+if(D.d){cur[D.d]=v;if(D.d=='k'){cur.items=cur.items.filter(x=>(v=='exam'?EX:FM).includes(x.t));touch();edView();return}}
+else if(D.s)cur.set[D.s]=['font','margin','gap'].includes(D.s)?+v||base[D.s]:v;
+else if(D.f){const x=cur.items[D.i];if(D.f=='opts')x.opts=v.split('\n').filter(s=>s.trim());else if(D.f=='pts')x.pts=+v||0;else x[D.f]=D.f=='ans'&&['mcq','tf'].includes(x.t)?+v:v}
+else return;touch()}
+document.addEventListener('input',onIn);
+let dg=-1;
+document.addEventListener('dragstart',e=>{const h=e.target.closest&&e.target.closest('[data-dh]');if(h){dg=+h.dataset.dh;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text','x')}});
+document.addEventListener('dragover',e=>{if(dg>=0&&e.target.closest('.it'))e.preventDefault()});
+document.addEventListener('drop',e=>{const c=e.target.closest('.it');if(dg<0||!c)return;e.preventDefault();const to=+c.dataset.di,a=cur.items,[x]=a.splice(dg,1);a.splice(to,0,x);dg=-1;touch();edView()});
+addEventListener('resize',()=>{if(cur&&view=='ed')pv()});
+document.addEventListener('change',e=>{onIn(e);if(e.target.dataset.c)edView();if(e.target.id=='logo'){const f=e.target.files[0];if(!f)return;if(f.size>600000){toast('الصورة كبيرة، اختر صورة أقل من 600KB');return}const r=new FileReader();r.onload=()=>{cur.set.logo=r.result;touch();edView()};r.readAsDataURL(f)}});
+draw();
+</script>
+</body>
+</html>
